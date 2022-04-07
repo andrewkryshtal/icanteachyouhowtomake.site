@@ -4,20 +4,16 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import { createContext } from 'react';
-import MainHeader from './components/MainHeader';
-
-// TODO custom hook with createContext
-const initialContextValue = 'Test'
+import { HomePageContainer } from './pages/HomePage/HomePageContainer';
+import { TitleProvider } from './hooks/useHeaderContext';
 
 function App() {
-  const HeaderContext = createContext(initialContextValue);
   return (
-    <HeaderContext.Provider value={initialContextValue}>
+    <TitleProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<MainHeader context={HeaderContext} />} />
-          <Route path="/:id" element={<MainHeader />} />
+          <Route path="/" element={<HomePageContainer />} />
+          <Route path="/:id" element={<HomePageContainer />} />
           <Route
             path="*"
             element={(
@@ -28,7 +24,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-    </HeaderContext.Provider>
+    </TitleProvider>
   );
 }
 

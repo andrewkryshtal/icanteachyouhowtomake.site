@@ -1,10 +1,8 @@
-import PropTypes from 'prop-types';
 import { MainHeaderComponent } from './MainHeaderComponent';
+import { useTitle } from '../../hooks/useHeaderContext';
 
 export const MainHeaderContainer = () => {
-  return <MainHeaderComponent />
+  const { state: headerTitle, dispatch: setHeaderTitle } = useTitle();
+  console.log({ headerTitle });
+  return <MainHeaderComponent headerTitle={headerTitle} setHeaderTitle={setHeaderTitle} />
 }
-
-MainHeaderContainer.propTypes = {
-  context: PropTypes.any,
-};
