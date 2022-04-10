@@ -3,30 +3,34 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import appleIcon from '../../assets/appleIcon.png'
 
-export const MainHeaderComponent = ({ headerTitle, setHeaderTitle }) => (
+export const MainHeaderComponent = ({ headerTitle }) => (
   <Wrapper>
     <LeftPartWrapper>
       <Icon src={appleIcon} alt="test" />
       <WindowName>{headerTitle}</WindowName>
-      <button type="button" onClick={() => setHeaderTitle({ type: 'set', title: 'test123' })}>test btn</button>
     </LeftPartWrapper>
   </Wrapper>
 )
 
 MainHeaderComponent.propTypes = {
   headerTitle: PropTypes.string,
-  setHeaderTitle: PropTypes.func,
 }
 
 const Wrapper = styled.div`
+    position: fixed;
+    top: 0;
+    width: 100%;
     height: 25px;
     border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    background-color: white;
+    z-index: 999;
 `;
 
 const LeftPartWrapper = styled.div`
     display: flex;
     align-items: center;
-    margin-top: 4px;
+    margin-top: 3px;
 `
 
 const Icon = styled.img`

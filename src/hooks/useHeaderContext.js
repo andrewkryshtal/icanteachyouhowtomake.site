@@ -3,7 +3,7 @@ import {
 } from 'react';
 import PropTypes from 'prop-types';
 
-export const HeaderTitleContext = createContext({});
+export const HeaderTitleContext = createContext('');
 
 const init = (initialCount) => initialCount
 
@@ -37,13 +37,4 @@ export const useTitle = () => {
     throw new Error('useCount must be used within a CountProvider')
   }
   return context
-}
-
-export const HeaderTitle = () => {
-  const title = useContext(HeaderTitleContext);
-  return (
-    <p>
-      {title}
-    </p>
-  )
 }

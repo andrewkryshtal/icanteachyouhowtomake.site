@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HomePageComponent } from './HomePageComponent';
 import { HeaderTitleContext } from '../../hooks/useHeaderContext';
 
 const HomePageContainer = () => {
+  const [isClickedOnce, setIsClickedOnce] = useState(false)
   return (
     <HeaderTitleContext.Consumer>
       {(headerTitleValue) => (
-        <HomePageComponent headerTitleValue={headerTitleValue} />
+        <HomePageComponent
+          isClickedOnce={isClickedOnce}
+          headerTitleValue={headerTitleValue}
+          setIsClickedOnce={setIsClickedOnce}
+        />
       )}
     </HeaderTitleContext.Consumer>
   )
