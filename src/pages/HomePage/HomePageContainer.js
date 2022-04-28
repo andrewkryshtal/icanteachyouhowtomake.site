@@ -3,7 +3,7 @@ import { HomePageComponent } from './HomePageComponent';
 import { HeaderTitleContext } from '../../hooks/useHeaderContext';
 
 const HomePageContainer = () => {
-  const [isClickedOnce, setIsClickedOnce] = useState(false)
+  const [isClickedOnce, setIsClickedOnce] = useState({})
   return (
     <HeaderTitleContext.Consumer>
       {(headerTitleValue) => (

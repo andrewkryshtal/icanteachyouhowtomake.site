@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DesktopItemComponent } from './DesktopItemComponent';
 
-export const DesktopItemContainer = ({ setIsClickedOnce, isClickedOnce }) => {
+export const DesktopItemContainer = ({ setIsClickedOnce, isClickedOnce, id }) => {
   const onClickHandler = (e) => {
     e.stopPropagation()
-    if (!isClickedOnce) {
-      setIsClickedOnce(true)
+    if (!isClickedOnce[id]) {
+      setIsClickedOnce({ ...isClickedOnce, [id]: true })
     }
   }
 
@@ -16,7 +16,7 @@ export const DesktopItemContainer = ({ setIsClickedOnce, isClickedOnce }) => {
 
   return (
     <DesktopItemComponent
-      isClickedOnce={isClickedOnce}
+      isClickedOnce={isClickedOnce[id]}
       onClickHandler={onClickHandler}
       onDoubleClickHandler={onDoubleClickHandler}
     />
@@ -26,4 +26,5 @@ export const DesktopItemContainer = ({ setIsClickedOnce, isClickedOnce }) => {
 DesktopItemContainer.propTypes = {
   isClickedOnce: PropTypes.bool,
   setIsClickedOnce: PropTypes.func,
+  id: PropTypes.string,
 }

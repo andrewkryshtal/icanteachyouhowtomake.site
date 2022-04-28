@@ -5,16 +5,16 @@ import MainHeader from '../../components/MainHeader';
 import DesktopItem from '../../components/DesktopItem';
 
 const HomePageComponent = ({ headerTitleValue, isClickedOnce, setIsClickedOnce }) => {
-  console.log({ isClickedOnce, setIsClickedOnce })
   return (
     <>
       <MainHeader headerTitleValue={headerTitleValue} />
       <Desktop onClick={(e) => {
         e.preventDefault()
-        setIsClickedOnce(false)
+        setIsClickedOnce({})
       }}
       >
-        <DesktopItem isClickedOnce={isClickedOnce} setIsClickedOnce={setIsClickedOnce} />
+        <DesktopItem id="courseFolder" isClickedOnce={isClickedOnce} setIsClickedOnce={setIsClickedOnce} />
+        <DesktopItem id="aboutFolder" isClickedOnce={isClickedOnce} setIsClickedOnce={setIsClickedOnce} />
       </Desktop>
     </>
   )
@@ -26,9 +26,11 @@ const Desktop = styled.div`
     left: 0;
     top: 25px;
     position: fixed;
+    background: rgba(51,51,51,0.7);
     z-index: 10;
+    background-color: #e5e5f7;
     opacity: 1;
-    background: #e5e5f7 repeating-linear-gradient(45deg, grey 25%, transparent 25%, transparent 75%, grey 75%, grey), repeating-linear-gradient(45deg, grey 25%, #e5e5f7 25%, #e5e5f7 75%, grey 75%, grey) 0 0, 1px 1px;
+    background-position: 0 0, 1px 1px;
     background-size: 2px 2px;
 `
 
