@@ -5,8 +5,9 @@ import { DesktopItemComponent } from './DesktopItemComponent';
 export const DesktopItemContainer = ({ setIsClickedOnce, isClickedOnce, id }) => {
   const onClickHandler = (e) => {
     e.stopPropagation()
+    setIsClickedOnce({})
     if (!isClickedOnce[id]) {
-      setIsClickedOnce({ ...isClickedOnce, [id]: true })
+      setIsClickedOnce({ [id]: true })
     }
   }
 
