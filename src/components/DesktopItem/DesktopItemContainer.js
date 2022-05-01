@@ -25,7 +25,7 @@ export const DesktopItemContainer = ({ setIsClickedOnce, isClickedOnce, id }) =>
 }
 
 DesktopItemContainer.propTypes = {
-  isClickedOnce: PropTypes.bool,
+  isClickedOnce: PropTypes.shape({}),
   setIsClickedOnce: PropTypes.func,
   id: PropTypes.string,
 }

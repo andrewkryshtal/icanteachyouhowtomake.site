@@ -8,7 +8,6 @@ export const HeaderTitleContext = createContext('');
 const init = (initialCount) => initialCount
 
 const setTitleReducer = (state, action) => {
-  console.log({ state, action })
   switch (action.type) {
     case 'set': {
       return action.title

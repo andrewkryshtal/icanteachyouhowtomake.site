@@ -1,14 +1,18 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { MainHeaderComponent } from './MainHeaderComponent';
 import { useTitle } from '../../hooks/useHeaderContext';
 
 export const MainHeaderContainer = () => {
-  useEffect(() => {
-    (async () => {
-      const battery = await navigator.getBattery()
-      console.log({ battery })
-    })()
-  }, [])
   const { state: headerTitle } = useTitle();
-  return <MainHeaderComponent headerTitle={headerTitle} />
+  const [clock, setClock] = useState('');
+  const updateClock = () => {
+    setClock(new Date().toLocaleString())
+  };
+  useEffect(() => {
+    const intervalId = setInterval(() => updateClock(), 1000)
+    return () => {
+      clearInterval(intervalId);
+    }
+  }, [])
+  return <MainHeaderComponent headerTitle={headerTitle} clock={clock} />
 }

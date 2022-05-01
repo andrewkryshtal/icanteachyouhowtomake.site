@@ -1,22 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import MainHeader from '../../components/MainHeader';
+import PropTypes, { string } from 'prop-types';
 import DesktopItem from '../../components/DesktopItem';
 
-const HomePageComponent = ({ headerTitleValue, isClickedOnce, setIsClickedOnce }) => {
+const HomePageComponent = ({ isClickedOnce, setIsClickedOnce }) => {
   return (
-    <>
-      <MainHeader headerTitleValue={headerTitleValue} />
-      <Desktop onClick={(e) => {
-        e.preventDefault()
-        setIsClickedOnce({})
-      }}
-      >
-        <DesktopItem id="courseFolder" isClickedOnce={isClickedOnce} setIsClickedOnce={setIsClickedOnce} />
-        <DesktopItem id="aboutFolder" isClickedOnce={isClickedOnce} setIsClickedOnce={setIsClickedOnce} />
-      </Desktop>
-    </>
+    <Desktop onClick={(e) => {
+      e.preventDefault()
+      setIsClickedOnce({})
+    }}
+    >
+      <DesktopItem id="courseFolder" isClickedOnce={isClickedOnce} setIsClickedOnce={setIsClickedOnce} />
+      <DesktopItem id="aboutFolder" isClickedOnce={isClickedOnce} setIsClickedOnce={setIsClickedOnce} />
+    </Desktop>
   )
 }
 
@@ -38,6 +34,6 @@ export { HomePageComponent }
 
 HomePageComponent.propTypes = {
   headerTitleValue: PropTypes.shape({ headerTitleValue: PropTypes.string }),
-  isClickedOnce: PropTypes.bool,
+  isClickedOnce: PropTypes.shape({ [string]: PropTypes.bool }),
   setIsClickedOnce: PropTypes.func,
 }

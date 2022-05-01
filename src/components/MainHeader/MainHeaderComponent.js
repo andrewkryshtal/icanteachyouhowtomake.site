@@ -2,18 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import appleIcon from '../../assets/appleIcon.png'
+import { BatteryComponent } from '../BatteryComponent';
 
-export const MainHeaderComponent = ({ headerTitle }) => (
+export const MainHeaderComponent = ({ headerTitle, clock }) => (
   <Wrapper>
     <LeftPartWrapper>
       <Icon src={appleIcon} alt="test" />
       <WindowName>{headerTitle}</WindowName>
     </LeftPartWrapper>
+    <RightPartWrapper>
+      <p>{clock}</p>
+      <BatteryComponent />
+    </RightPartWrapper>
   </Wrapper>
 )
 
 MainHeaderComponent.propTypes = {
   headerTitle: PropTypes.string,
+  clock: PropTypes.string,
 }
 
 const Wrapper = styled.div`
@@ -25,12 +31,20 @@ const Wrapper = styled.div`
     border-top: 1px solid black;
     background-color: white;
     z-index: 999;
+    display: flex;
+    justify-content: space-between;
 `;
 
 const LeftPartWrapper = styled.div`
     display: flex;
     align-items: center;
     margin-top: 3px;
+`
+
+const RightPartWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
 `
 
 const Icon = styled.img`
